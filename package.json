@@ -1,0 +1,65 @@
+{
+  "name": "toggle-fold",
+  "displayName": "Toggle Fold",
+  "description": "Toggle between fold all and unfold all with a single keybinding (compatible with VS Code & Cursor)",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "publisher": "yangdanping",
+  "contributes": {
+    "commands": [
+      {
+        "command": "toggle-fold.toggle",
+        "title": "Toggle Fold/Unfold All"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "toggle-fold.toggle",
+        "key": "cmd+[",
+        "mac": "cmd+[",
+        "win": "ctrl+[",
+        "linux": "ctrl+["
+      }
+    ],
+    "configuration": {
+      "title": "Toggle Fold",
+      "properties": {
+        "toggleFold.foldCommand": {
+          "type": "string",
+          "default": "editor.foldAll",
+          "description": "The command to execute when folding (e.g., editor.foldAll or editor.foldAllExcept)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "pnpm run compile && pnpm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "20.2.5",
+    "@types/vscode": "^1.75.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
+    "@vscode/test-electron": "^2.3.2",
+    "@vscode/vsce": "^3.7.1",
+    "eslint": "^8.41.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.1.3"
+  }
+}
